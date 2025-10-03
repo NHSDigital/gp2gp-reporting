@@ -25,4 +25,4 @@ You can't push to the main branch. Therefore, for all changes you will need to c
   - Nothing in it should be confidential, private to NHSE or include any personal data.
   - All links should be public.
   - Consider comments and README.md text: comments in open source repos such as this are not official communications and don't go through the normal approval process for public communication. They can however still be interpreted as official communication, even if not intended as such.
-- Use [inclusive language](inclusive-language.md): avoid terms which cause hurt and offence, including if they have historically been considered industry-standard terms.
+- Use [inclusive language](https://github.com/NHSDigital/software-engineering-quality-framework/blob/main/inclusive-language.md): avoid terms which cause hurt and offence, including if they have historically been considered industry-standard terms.
