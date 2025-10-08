@@ -19,13 +19,13 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - uses: anchore/sbom-action@v0
+      - uses: anchore/sbom-action@f8bdd1d8ac5e901a77a92f111440fdb1b593736b # v0.20.6
         with:
           path: "."
           format: cyclonedx-json
           output-file: sbom-repo-${{ github.event.repository.name }}-${{ github.sha }}.cdx.json
 
-      - uses: anchore/scan-action@v7
+      - uses: anchore/scan-action@f6601287cdb1efc985d6b765bbf99cb4c0ac29d8 # v7.0.0
         id: sbom-scan
         with:
           sbom: sbom-repo-${{ github.event.repository.name }}-${{ github.sha }}.cdx.json
