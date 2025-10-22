@@ -10,7 +10,7 @@
 
 ### Initial set up
 
-1. `git clone git@github.com:nhsconnect/gp2gp-reporting.git`
+1. `git clone git@github.com:NHSDigital/gp2gp-reporting.git`
 2. `cd gp2gp-reporting/dashboard`
 3. `npm ci`
 4. `npm run enableGitHooks`
