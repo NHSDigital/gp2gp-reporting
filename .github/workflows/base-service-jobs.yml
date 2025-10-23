@@ -153,7 +153,7 @@ jobs:
   redeploy_image_on_infra:
     name: Redeploy image on Infrastructure
     needs: [transform-service-name]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v2
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
     with:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
@@ -166,7 +166,7 @@ jobs:
   redeploy_step_functions_on_infra:
     name: Redeploy step functions on infrastructure 
     needs: [redeploy_image_on_infra]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v2
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
     with:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
