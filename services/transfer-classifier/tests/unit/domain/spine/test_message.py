@@ -2,6 +2,7 @@ from prmdata.domain.spine.message import (
     APPLICATION_ACK,
     COMMON_POINT_TO_POINT,
     EHR_REQUEST_COMPLETED,
+    EHR_REQUEST_COMPLETED_WITH_REDACTIONS,
     EHR_REQUEST_STARTED,
 )
 from tests.builders.spine import build_message
@@ -9,6 +10,16 @@ from tests.builders.spine import build_message
 
 def test_is_ehr_request_completed_returns_true_when_interaction_is_ehr_req_completed():
     message = build_message(interaction_id=EHR_REQUEST_COMPLETED)
+
+    expected = True
+
+    actual = message.is_ehr_request_completed()
+
+    assert actual == expected
+
+
+def test_is_ehr_request_completed_with_redactions_returns_true_when_interaction_is_ehr_req_completed():
+    message = build_message(interaction_id=EHR_REQUEST_COMPLETED_WITH_REDACTIONS)
 
     expected = True
 

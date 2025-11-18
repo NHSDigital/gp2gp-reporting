@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 EHR_REQUEST_STARTED = "urn:nhs:names:services:gp2gp/RCMR_IN010000UK05"
 EHR_REQUEST_COMPLETED = "urn:nhs:names:services:gp2gp/RCMR_IN030000UK06"
+EHR_REQUEST_COMPLETED_WITH_REDACTIONS = "urn:nhs:names:services:gp2gp/RCMR_IN030000UK07"
 APPLICATION_ACK = "urn:nhs:names:services:gp2gp/MCCI_IN010000UK13"
 COMMON_POINT_TO_POINT = "urn:nhs:names:services:gp2gp/COPC_IN000001UK01"
 
@@ -36,7 +37,7 @@ class Message(NamedTuple):
         return self.interaction_id == EHR_REQUEST_STARTED
 
     def is_ehr_request_completed(self):
-        return self.interaction_id == EHR_REQUEST_COMPLETED
+        return self.interaction_id in [EHR_REQUEST_COMPLETED, EHR_REQUEST_COMPLETED_WITH_REDACTIONS]
 
     def is_acknowledgement_of(self, other_message):
         return self.interaction_id == APPLICATION_ACK and self.message_ref == other_message.guid

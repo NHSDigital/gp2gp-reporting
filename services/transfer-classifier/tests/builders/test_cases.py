@@ -5,6 +5,7 @@ from prmdata.domain.spine.message import (
     APPLICATION_ACK,
     COMMON_POINT_TO_POINT,
     EHR_REQUEST_COMPLETED,
+    EHR_REQUEST_COMPLETED_WITH_REDACTIONS,
     EHR_REQUEST_STARTED,
     Message,
 )
@@ -81,6 +82,23 @@ class GP2GPTestCase:
                 conversation_id=self._conversation_id,
                 guid=kwargs.get("guid", a_string()),
                 interaction_id=EHR_REQUEST_COMPLETED,
+                from_party_asid=self._sending_asid,
+                to_party_asid=self._requesting_asid,
+                message_ref=None,
+                error_code=None,
+                from_system=self._sending_system,
+                to_system=self._requesting_system,
+            )
+        )
+        return self
+
+    def with_core_ehr_with_redactions(self, **kwargs):
+        self._messages.append(
+            Message(
+                time=kwargs.get("time", a_datetime()),
+                conversation_id=self._conversation_id,
+                guid=kwargs.get("guid", a_string()),
+                interaction_id=EHR_REQUEST_COMPLETED_WITH_REDACTIONS,
                 from_party_asid=self._sending_asid,
                 to_party_asid=self._requesting_asid,
                 message_ref=None,
@@ -304,7 +322,8 @@ def ehr_integrated_successfully(**kwargs) -> List[Message]:
         GP2GPTestCase(conversation_id=conversation_id)
         .with_request()
         .with_sender_acknowledgement(message_ref=conversation_id)
-        .with_core_ehr(guid=ehr_guid, time=req_complete_time)
+        .with_core_ehr_with_redactions(guid=ehr_guid, time=req_complete_time)
+        .with_core_ehr_with_redactions(guid=ehr_guid, time=req_complete_time) # TODO: Remove this, as this is a deliberate duplicate
         .with_requester_acknowledgement(time=ehr_ack_time, message_ref=ehr_guid)
         .build()
     )
@@ -493,7 +512,7 @@ def first_ehr_integrated_before_second_ehr_failed(**kwargs) -> List[Message]:
         .with_request()
         .with_sender_acknowledgement(message_ref=conversation_id)
         .with_core_ehr(guid=first_ehr_guid, time=req_complete_time)
-        .with_core_ehr(guid=second_ehr_guid)
+        .with_core_ehr_with_redactions(guid=second_ehr_guid)
         .with_requester_acknowledgement(message_ref=first_ehr_guid, time=ehr_ack_time)
         .with_requester_acknowledgement(message_ref=second_ehr_guid, error_code=ehr_ack_error)
         .build()
@@ -651,7 +670,7 @@ def copc_fragment_failure(**kwargs) -> List[Message]:
         .with_sender_acknowledgement(
             message_ref=conversation_id, time=copc_fragment_time - timedelta(hours=2)
         )
-        .with_core_ehr(time=copc_fragment_time - timedelta(hours=1))
+        .with_core_ehr_with_redactions(time=copc_fragment_time - timedelta(hours=1))
         .with_copc_fragment_continue()
         .with_copc_fragment(guid=fragment_guid, time=copc_fragment_time)
         .with_requester_acknowledgement(message_ref=fragment_guid, error_code=fragment_error)
@@ -782,7 +801,7 @@ def copc_fragment_failures(**kwargs) -> List[Message]:
         GP2GPTestCase(conversation_id=conversation_id)
         .with_request()
         .with_sender_acknowledgement(message_ref=conversation_id)
-        .with_core_ehr()
+        .with_core_ehr_with_redactions()
         .with_copc_fragment_continue()
     )
 
@@ -812,7 +831,7 @@ def _concluded_with_conflicting_acks_and_duplicate_ehrs(**kwargs):
         .with_request()
         .with_sender_acknowledgement(message_ref=conversation_id)
         .with_core_ehr(guid=ehr_guid_1)
-        .with_core_ehr(guid=ehr_guid_2, time=req_complete_time)
+        .with_core_ehr_with_redactions(guid=ehr_guid_2, time=req_complete_time)
         .with_core_ehr(guid=ehr_guid_3)
         .with_requester_acknowledgement(message_ref=ehr_guid_2, error_code=DUPLICATE_EHR_ERROR)
         .with_requester_acknowledgement(

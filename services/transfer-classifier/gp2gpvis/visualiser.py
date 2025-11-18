@@ -33,12 +33,14 @@ class ConversationFormatter:
 
     _EHR_REQUEST_STARTED = "urn:nhs:names:services:gp2gp/RCMR_IN010000UK05"
     _EHR_REQUEST_COMPLETED = "urn:nhs:names:services:gp2gp/RCMR_IN030000UK06"
+    _EHR_REQUEST_COMPLETED_WITH_REDACTIONS = "urn:nhs:names:services:gp2gp/RCMR_IN030000UK07"
     _APPLICATION_ACK = "urn:nhs:names:services:gp2gp/MCCI_IN010000UK13"
     _COMMON_POINT_TO_POINT = "urn:nhs:names:services:gp2gp/COPC_IN000001UK01"
 
     _INTERACTION_NAMES = {
         _EHR_REQUEST_STARTED: "GP2GP request",
         _EHR_REQUEST_COMPLETED: "Core EHR",
+        _EHR_REQUEST_COMPLETED_WITH_REDACTIONS: "Core EHR (with redactions)",
         _APPLICATION_ACK: "Acknowledgement",
         _COMMON_POINT_TO_POINT: "COPC",
     }
