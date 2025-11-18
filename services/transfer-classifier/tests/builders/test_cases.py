@@ -323,9 +323,6 @@ def ehr_integrated_successfully(**kwargs) -> List[Message]:
         .with_request()
         .with_sender_acknowledgement(message_ref=conversation_id)
         .with_core_ehr_with_redactions(guid=ehr_guid, time=req_complete_time)
-        .with_core_ehr_with_redactions(
-            guid=ehr_guid, time=req_complete_time
-        )  # TODO: Remove this, as this is a deliberate duplicate
         .with_requester_acknowledgement(time=ehr_ack_time, message_ref=ehr_guid)
         .build()
     )
