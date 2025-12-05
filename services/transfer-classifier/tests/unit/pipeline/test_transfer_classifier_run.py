@@ -5,10 +5,10 @@
 # from moto import mock_s3
 #
 # from prmdata.pipeline.config import TransferClassifierConfig
-# from prmdata.pipeline.io import TransferClassifierIO
+# from prmdata.pipeline.data import TransferClassifierIO
 # from prmdata.pipeline.spine_runner import SpineRunner
 # from prmdata.utils.input_output.s3 import S3DataManager
-# from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+# from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 # @mock_s3
 # def test_transfer_classifier_spine_runner_abstract_class():
