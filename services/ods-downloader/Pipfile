@@ -7,7 +7,7 @@ name = "pypi"
 gp2gp-ods-downloader = {editable = true, path = "."}
 
 [dev-packages]
-black = "==22.3.0"
+black = "==25.11.0"
 bandit = "~=1.6"
 flake8 = "~=3.0"
 flake8-bugbear = "~=20.0"
