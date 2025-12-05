@@ -29,7 +29,7 @@ boto3-stubs = {extras = ["s3"], version = "1.18"}
 urllib3 = "==1.26.18"
 
 [requires]
-python_version = "3.9"
+python_version = "3.14"
 
 [scripts]
 test = "pytest --cov=prmreportsgenerator --cov-report=term-missing tests/unit tests/e2e"

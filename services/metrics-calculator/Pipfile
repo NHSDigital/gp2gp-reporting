@@ -29,7 +29,7 @@ pytz = "~=2022.7.1"
 urllib3 = "==1.26.18"
 
 [requires]
-python_version = "3.9"
+python_version = "3.14"
 
 [scripts]
 test = "pytest --cov=prmcalculator --cov-report=term-missing tests/unit tests/integration tests/e2e"

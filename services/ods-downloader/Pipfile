@@ -27,7 +27,7 @@ pytest = "~=6.1"
 urllib3 = "==1.26.18"
 
 [requires]
-python_version = "3.9"
+python_version = "3.14"
 
 [scripts]
 test = "pytest --cov=prmods --cov-report=term-missing tests/unit tests/e2e"
