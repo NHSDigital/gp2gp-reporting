@@ -2,7 +2,7 @@ from unittest.mock import Mock
 
 import pyarrow as pa
 
-from prmreportsgenerator.io.reports_io import ReportsIO
+from prmreportsgenerator.data.reports_io import ReportsIO
 from tests.builders.common import a_datetime
 
 _METRIC_MONTH = 12

@@ -2,15 +2,15 @@ from unittest import mock
 
 import boto3
 import pyarrow as pa
-from moto import mock_s3
+from moto import mock_aws
 
-from prmreportsgenerator.io.s3 import S3DataManager, logger
-from tests.unit.io.s3 import MOTO_MOCK_REGION
+from prmreportsgenerator.data.s3 import S3DataManager, logger
+from tests.unit.data.s3 import MOTO_MOCK_REGION
 
 SOME_METADATA = {"metadata_field": "metadata_value"}
 
 
-@mock_s3
+@mock_aws
 def test_writes_csv():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -29,7 +29,7 @@ def test_writes_csv():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_writes_correct_content_type():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -48,7 +48,7 @@ def test_writes_correct_content_type():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_writes_metadata_when_supplied():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -71,7 +71,7 @@ def test_writes_metadata_when_supplied():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_logs_writing_file_events():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     conn.create_bucket(Bucket="test_bucket")

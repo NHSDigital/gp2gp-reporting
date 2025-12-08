@@ -3,14 +3,14 @@ from unittest import mock
 import boto3
 import pyarrow as pa
 import pytest
-from moto import mock_s3
+from moto import mock_aws
 from pyarrow.parquet import write_table
 
-from prmreportsgenerator.io.s3 import S3DataManager, logger
-from tests.unit.io.s3 import MOTO_MOCK_REGION
+from prmreportsgenerator.data.s3 import S3DataManager, logger
+from tests.unit.data.s3 import MOTO_MOCK_REGION
 
 
-@mock_s3
+@mock_aws
 def test_read_parquet_returns_table():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -32,7 +32,7 @@ def test_read_parquet_returns_table():
     assert actual_data == expected_data
 
 
-@mock_s3
+@mock_aws
 def test_will_log_reading_file_event():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -57,7 +57,7 @@ def test_will_log_reading_file_event():
         )
 
 
-@mock_s3
+@mock_aws
 def test_read_parquet_logs_error_when_s3_parquet_file_not_found(capsys):
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"

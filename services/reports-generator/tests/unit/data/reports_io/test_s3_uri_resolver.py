@@ -4,7 +4,7 @@ from unittest.mock import patch
 from dateutil.tz import UTC, tzutc
 
 from prmreportsgenerator.domain.reporting_windows.reporting_window import ReportingWindow
-from prmreportsgenerator.io.reports_io import ReportsS3UriResolver
+from prmreportsgenerator.data.reports_io import ReportsS3UriResolver
 from prmreportsgenerator.report_name import ReportName
 from tests.builders.common import a_string, an_integer
 
