@@ -1,7 +1,7 @@
 from unittest.mock import Mock, call
 
 from prmdata.domain.ods_portal.organisation_lookup import OrganisationLookup
-from prmdata.pipeline.io import TransferClassifierIO
+from prmdata.pipeline.data import TransferClassifierIO
 from tests.builders.common import a_string
 
 _DATE_ANCHOR_YEAR = 2021

@@ -2,13 +2,13 @@ from unittest import mock
 
 import boto3
 import pytest
-from moto import mock_s3
+from moto import mock_aws
 
 from prmdata.utils.input_output.s3 import JsonFileNotFoundException, S3DataManager, logger
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 
-@mock_s3
+@mock_aws
 def test_read_json_object_returns_dictionary():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -24,7 +24,7 @@ def test_read_json_object_returns_dictionary():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_will_log_reading_file_event():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -42,7 +42,7 @@ def test_will_log_reading_file_event():
         )
 
 
-@mock_s3
+@mock_aws
 def test_throws_json_file_not_found_exception_when_unable_to_read_file_from_s3():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")

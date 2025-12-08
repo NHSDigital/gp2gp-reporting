@@ -13,7 +13,7 @@ from prmdata.domain.mi.mi_message import (
 )
 from prmdata.domain.mi.mi_service import MiService
 from prmdata.domain.mi.mi_transfer import MiTransfer
-from prmdata.pipeline.io import TransferClassifierIO
+from prmdata.pipeline.data import TransferClassifierIO
 from prmdata.pipeline.mi_runner import MiRunner
 from prmdata.pipeline.transfer_classifier import RunnerObservabilityProbe
 from tests.builders.common import a_datetime

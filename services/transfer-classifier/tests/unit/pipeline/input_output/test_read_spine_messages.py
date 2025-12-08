@@ -3,7 +3,7 @@ from datetime import datetime
 from dateutil.tz import tzutc
 
 from prmdata.domain.spine.message import Message
-from prmdata.pipeline.io import TransferClassifierIO
+from prmdata.pipeline.data import TransferClassifierIO
 from prmdata.utils.input_output.s3 import S3DataManager
 from tests.builders.common import a_string
 from tests.builders.file import build_gzip_csv

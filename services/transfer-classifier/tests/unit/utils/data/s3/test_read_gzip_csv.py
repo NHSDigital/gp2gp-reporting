@@ -1,14 +1,14 @@
 from unittest import mock
 
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 
 from prmdata.utils.input_output.s3 import S3DataManager, logger
 from tests.builders.file import build_gzip_csv
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 
-@mock_s3
+@mock_aws
 def test_returns_csv_row_as_dictionary():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -32,7 +32,7 @@ def test_returns_csv_row_as_dictionary():
     assert list(actual) == expected
 
 
-@mock_s3
+@mock_aws
 def test_will_log_reading_file_event():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"

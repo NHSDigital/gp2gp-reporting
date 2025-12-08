@@ -2,16 +2,16 @@ from unittest import mock
 
 import boto3
 import pyarrow as pa
-from moto import mock_s3
+from moto import mock_aws
 
 from prmdata.utils.input_output.s3 import S3DataManager, logger
 from tests.builders.s3 import read_s3_parquet
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 SOME_METADATA = {"metadata_field": "metadata_value"}
 
 
-@mock_s3
+@mock_aws
 def test_writes_table_as_parquet():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -27,7 +27,7 @@ def test_writes_table_as_parquet():
     assert actual == data
 
 
-@mock_s3
+@mock_aws
 def test_will_log_writing_table_events():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -72,7 +72,7 @@ def test_will_log_writing_table_events():
         )
 
 
-@mock_s3
+@mock_aws
 def test_will_write_metatdata():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
