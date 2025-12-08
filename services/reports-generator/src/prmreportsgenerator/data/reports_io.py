@@ -5,7 +5,7 @@ from typing import Dict, List, Optional, Union
 import pyarrow as pa
 
 from prmreportsgenerator.domain.reporting_windows.reporting_window import ReportingWindow
-from prmreportsgenerator.io.s3 import S3DataManager
+from prmreportsgenerator.data.s3 import S3DataManager
 from prmreportsgenerator.report_name import ReportName
 from prmreportsgenerator.utils.add_leading_zero import add_leading_zero
 
