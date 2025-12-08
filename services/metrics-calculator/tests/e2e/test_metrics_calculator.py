@@ -103,7 +103,7 @@ def _read_s3_json(bucket, key):
 
 
 def _build_fake_s3(host, port):
-    app = DomainDispatcherApplication(create_backend_app, "s3")
+    app = DomainDispatcherApplication(create_backend_app)
     server = make_server(host, port, app)
     return ThreadedServer(server)
 
