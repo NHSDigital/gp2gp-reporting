@@ -5,7 +5,7 @@ import boto3
 from moto import mock_aws
 
 from prmods.utils.data.s3 import S3DataManager, logger
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 SOME_METADATA = {"metadata_field": "metadata_value"}
 
