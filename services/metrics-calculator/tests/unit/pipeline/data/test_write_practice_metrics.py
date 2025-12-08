@@ -10,7 +10,7 @@ from prmcalculator.domain.practice.construct_practice_summary import (
     PracticeSummary,
     RequestedTransferMetrics,
 )
-from prmcalculator.pipeline.io import PlatformMetricsIO
+from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO
 from tests.builders.common import a_string
 
 _DATE_ANCHOR_MONTH = 1

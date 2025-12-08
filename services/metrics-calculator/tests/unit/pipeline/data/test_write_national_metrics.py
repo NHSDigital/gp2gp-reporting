@@ -10,7 +10,7 @@ from prmcalculator.domain.national.construct_national_metrics_presentation impor
     PaperFallbackMetricsPresentation,
     ProcessFailureMetricsPresentation,
 )
-from prmcalculator.pipeline.io import PlatformMetricsIO
+from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO
 from tests.builders.common import a_string
 
 _DATE_ANCHOR_MONTH = 1

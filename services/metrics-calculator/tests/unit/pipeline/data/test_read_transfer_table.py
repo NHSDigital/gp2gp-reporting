@@ -2,7 +2,7 @@ from unittest.mock import Mock
 
 import pyarrow as pa
 
-from prmcalculator.pipeline.io import PlatformMetricsIO
+from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO
 from tests.builders.common import a_datetime
 
 _METRIC_MONTH = 12

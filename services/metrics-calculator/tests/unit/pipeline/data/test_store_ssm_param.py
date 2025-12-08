@@ -4,7 +4,7 @@ from unittest.mock import Mock
 import pytest
 from botocore.exceptions import ClientError
 
-from prmcalculator.pipeline.io import PlatformMetricsIO, logger
+from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO, logger
 
 
 def test_store_ssm_param():

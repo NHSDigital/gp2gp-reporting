@@ -9,7 +9,7 @@ from prmcalculator.domain.gp2gp.transfer import (
     TransferOutcome,
     TransferStatus,
 )
-from prmcalculator.pipeline.io import PlatformMetricsIO
+from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO
 from tests.builders.common import a_datetime
 from tests.builders.gp2gp import build_practice_details
 
