@@ -8,23 +8,23 @@ prm-spine-exporter = {editable = true, path = "."}
 
 [dev-packages]
 black = "==25.11.0"
-bandit = "~=1.7"
-flake8 = "~=3.9"
-flake8-bugbear="~=21.9"
-flake8-comprehensions="~=3.6"
-mccabe="~=0.6"
-flake8-builtins="~=1.5"
+bandit = "~=1.9.2"
+flake8 = "~=7.2.0"
+flake8-bugbear="~=25.11.29"
+flake8-comprehensions="~=3.17.0"
+mccabe="~=0.7.0"
+flake8-builtins="~=3.1.0"
 flake8-print="~=5.0"
-freezegun = "~=1.1"
-isort = "~=5.9"
-moto = {version = "~=4.1.4", extras = ["server"]}
-mypy = "~=0.9"
-pytest-cov = "~=3.0"
-pytest = "~=6.2"
+freezegun = "~=1.5.5"
+isort = "~=7.0.0"
+moto = {version = "~=5.1.18", extras = ["server"]}
+mypy = "~=1.19.0"
+pytest-cov = "~=7.0.0"
+pytest = "~=9.0.1"
 types-freezegun = "~=1.1"
 types-requests = "~=2.26"
-types-python-dateutil = "~=2.8"
-urllib3 = "==1.26.18"
+types-python-dateutil = "~=2.9"
+urllib3 = "==2.6.0"
 
 [requires]
 python_version = "3.14"
