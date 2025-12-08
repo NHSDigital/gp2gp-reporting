@@ -165,7 +165,7 @@ def _get_s3_path(year, month, day):
 
 
 def _override_day_spine_messages(datadir, input_spine_data_bucket, list_dates):
-    for (year, month, day) in list_dates:
+    for year, month, day in list_dates:
         day = add_leading_zero(day)
         month = add_leading_zero(month)
 
@@ -179,7 +179,7 @@ def _override_day_spine_messages(datadir, input_spine_data_bucket, list_dates):
 
 
 def _upload_template_spine_data(datadir, input_spine_data_bucket, list_dates):
-    for (year, month, day) in list_dates:
+    for year, month, day in list_dates:
         empty_spine_messages = read_file_to_gzip_buffer(
             datadir / "inputs" / "template-spine_messages.csv"
         )
@@ -241,7 +241,7 @@ def test_uploads_classified_transfers_given_start_and_end_datetime_and_cutoff(da
             (2020, 1, day) for day in range(1, 4)
         ]
 
-        for (year, data_month, data_day) in expected_days:
+        for year, data_month, data_day in expected_days:
             month = add_leading_zero(data_month)
             day = add_leading_zero(data_day)
 
