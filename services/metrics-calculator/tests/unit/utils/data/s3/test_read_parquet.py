@@ -3,7 +3,7 @@ from unittest import mock
 import boto3
 import pyarrow as pa
 import pytest
-from moto import mock_s3
+from moto.s3 import mock_s3
 from pyarrow.parquet import write_table
 
 from prmcalculator.utils.io.s3 import S3DataManager, logger

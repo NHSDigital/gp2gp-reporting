@@ -12,7 +12,7 @@ import boto3
 import pyarrow as pa
 import pytest
 from botocore.config import Config
-from moto import mock_ssm
+from moto.ssm import mock_ssm
 from moto.server import DomainDispatcherApplication, create_backend_app
 from pyarrow._s3fs import S3FileSystem
 from pyarrow.parquet import write_table
