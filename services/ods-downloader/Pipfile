@@ -8,23 +8,23 @@ gp2gp-ods-downloader = {editable = true, path = "."}
 
 [dev-packages]
 black = "==25.11.0"
-bandit = "~=1.6"
-flake8 = "~=3.9"
-flake8-bugbear="~=21.9"
-flake8-comprehensions="~=3.6"
-mccabe = "~=0.6"
-flake8-builtins="~=1.5"
+bandit = "~=1.9.2"
+flake8 = "~=7.2.0"
+flake8-bugbear="~=25.11.29"
+flake8-comprehensions="~=3.17.0"
+mccabe = "~=0.7.0"
+flake8-builtins="~=3.1.0"
 flake8-print="~=5.0"
-isort = "~=5.9"
-mypy = "~=0.9"
+isort = "~=7.0.0"
+mypy = "~=1.19.0"
 types-requests = "*"
 types-python-dateutil = "*"
 types-freezegun = "*"
-moto = {version = "~=4.1.4", extras = ["server"]}
-freezegun = "~=0.3"
-pytest-cov = "~=2.10"
-pytest = "~=6.1"
-urllib3 = "==1.26.18"
+moto = {version = "~=5.1.18", extras = ["server"]}
+freezegun = "~=1.5.5"
+pytest-cov = "~=7.0.0"
+pytest = "~=9.0.1"
+urllib3 = "==2.6.0"
 
 [requires]
 python_version = "3.14"
