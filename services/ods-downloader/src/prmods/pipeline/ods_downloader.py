@@ -43,9 +43,9 @@ class OdsDownloader:
         }
 
     def _add_asid_lookup_month_to_metadata(self, asid_lookup_datetime: datetime):
-        self._output_metadata[
-            "asid-lookup-month"
-        ] = f"{asid_lookup_datetime.year}-{asid_lookup_datetime.month}"
+        self._output_metadata["asid-lookup-month"] = (
+            f"{asid_lookup_datetime.year}-{asid_lookup_datetime.month}"
+        )
 
     def _read_asid_lookup(self, date_anchor: datetime) -> AsidLookup:
         asid_lookup_s3_path = self._uris.asid_lookup(date_anchor)
