@@ -3,9 +3,9 @@ from unittest import mock
 import boto3
 from moto import mock_s3
 
-from prmods.utils.io.s3 import S3DataManager, logger
+from prmods.utils.data.s3 import S3DataManager, logger
 from tests.builders.file import build_gzip_csv
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 
 @mock_s3

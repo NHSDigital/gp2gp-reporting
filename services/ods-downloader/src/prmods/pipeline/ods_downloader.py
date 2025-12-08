@@ -14,7 +14,7 @@ from prmods.domain.ods_portal.metadata_service import (
 from prmods.domain.ods_portal.ods_portal_client import OdsPortalClient
 from prmods.domain.ods_portal.ods_portal_data_fetcher import OdsPortalDataFetcher
 from prmods.pipeline.s3_uri_resolver import OdsDownloaderS3UriResolver
-from prmods.utils.io.s3 import S3DataManager
+from prmods.utils.data.s3 import S3DataManager
 
 logger = logging.getLogger(__name__)
 
