@@ -3,7 +3,7 @@ from unittest.mock import call
 
 import boto3
 import pytest
-from moto import mock_s3
+from moto import mock_aws
 
 from prmexporter.io.s3 import S3DataManager, logger
 from tests.builders.file import build_csv_bytes, open_gzip
@@ -12,7 +12,7 @@ MOTO_MOCK_REGION = "us-east-1"
 SOME_METADATA = {"metadata_field": "metadata_value"}
 
 
-@mock_s3
+@mock_aws
 def test_writes_csv_to_s3():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -35,7 +35,7 @@ def test_writes_csv_to_s3():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_writes_metadata():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -56,7 +56,7 @@ def test_writes_metadata():
     assert actual_metadata == metadata
 
 
-@mock_s3
+@mock_aws
 def test_exits_if_there_is_no_data():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -76,7 +76,7 @@ def test_exits_if_there_is_no_data():
     assert str(e.value) == "Spine extract is empty"
 
 
-@mock_s3
+@mock_aws
 def test_logs_events():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
