@@ -3,8 +3,8 @@ from unittest import mock
 import boto3
 from moto import mock_aws
 
-from prmcalculator.utils.io.s3 import S3DataManager, logger
-from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
+from prmcalculator.utils.data.s3 import S3DataManager, logger
+from tests.unit.utils.data.s3 import MOTO_MOCK_REGION
 
 
 @mock_aws

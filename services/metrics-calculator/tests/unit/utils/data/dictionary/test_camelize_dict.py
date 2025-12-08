@@ -1,4 +1,4 @@
-from prmcalculator.utils.io.dictionary import camelize_dict
+from prmcalculator.utils.data.dictionary import camelize_dict
 
 
 def test_single_string_property():

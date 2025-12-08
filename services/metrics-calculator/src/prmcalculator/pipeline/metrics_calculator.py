@@ -15,7 +15,7 @@ from prmcalculator.domain.practice.calculate_practice_metrics import (
 from prmcalculator.domain.reporting_window import ReportingWindow, YearMonth
 from prmcalculator.pipeline.platform_metrics import PlatformMetricsIO
 from prmcalculator.pipeline.s3_uri_resolver import PlatformMetricsS3UriResolver
-from prmcalculator.utils.io.s3 import S3DataManager
+from prmcalculator.utils.data.s3 import S3DataManager
 
 
 class MetricsCalculator:

@@ -9,8 +9,8 @@ from prmcalculator.domain.gp2gp.transfer import Transfer, convert_table_to_trans
 from prmcalculator.domain.national.construct_national_metrics_presentation import (
     NationalMetricsPresentation,
 )
-from prmcalculator.utils.io.dictionary import camelize_dict
-from prmcalculator.utils.io.s3 import S3DataManager
+from prmcalculator.utils.data.dictionary import camelize_dict
+from prmcalculator.utils.data.s3 import S3DataManager
 
 logger = logging.getLogger(__name__)
 
