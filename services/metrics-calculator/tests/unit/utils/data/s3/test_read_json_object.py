@@ -1,13 +1,13 @@
 from unittest import mock
 
 import boto3
-from moto.s3 import mock_s3
+from moto import mock_aws
 
 from prmcalculator.utils.io.s3 import S3DataManager, logger
 from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
 
 
-@mock_s3
+@mock_aws
 def test_read_json_object_returns_dictionary():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -23,7 +23,7 @@ def test_read_json_object_returns_dictionary():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_will_log_reading_file_event():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")

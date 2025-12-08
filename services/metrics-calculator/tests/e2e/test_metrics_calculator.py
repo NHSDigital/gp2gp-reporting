@@ -12,7 +12,7 @@ import boto3
 import pyarrow as pa
 import pytest
 from botocore.config import Config
-from moto.ssm import mock_ssm
+from moto import mock_aws
 from moto.server import DomainDispatcherApplication, create_backend_app
 from pyarrow._s3fs import S3FileSystem
 from pyarrow.parquet import write_table
@@ -191,7 +191,7 @@ def _get_ssm_param(ssm_parameter_name):
 
 
 @pytest.mark.filterwarnings("ignore:Conversion of")
-@mock_ssm
+@mock_aws
 @mock.patch.dict(os.environ, {"AWS_ACCESS_KEY_ID": FAKE_S3_ACCESS_KEY})
 def test_reads_daily_input_files_and_outputs_metrics_to_s3_including_slow_transfers(datadir):
     fake_s3, s3_client = _setup()

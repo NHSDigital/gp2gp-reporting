@@ -2,7 +2,7 @@ from datetime import datetime
 from unittest import mock
 
 import boto3
-from moto.s3 import mock_s3
+from moto import mock_aws
 
 from prmcalculator.utils.io.s3 import S3DataManager, logger
 from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
@@ -10,7 +10,7 @@ from tests.unit.utils.io.s3 import MOTO_MOCK_REGION
 SOME_METADATA = {"metadata_field": "metadata_value"}
 
 
-@mock_s3
+@mock_aws
 def test_writes_dictionary():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -28,7 +28,7 @@ def test_writes_dictionary():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_writes_dictionary_with_timestamp():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket = conn.create_bucket(Bucket="test_bucket")
@@ -46,7 +46,7 @@ def test_writes_dictionary_with_timestamp():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_writes_correct_content_type():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -65,7 +65,7 @@ def test_writes_correct_content_type():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_write_json_will_write_metadata_when_supplied():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
@@ -88,7 +88,7 @@ def test_write_json_will_write_metadata_when_supplied():
     assert actual == expected
 
 
-@mock_s3
+@mock_aws
 def test_will_log_writing_file_events():
     conn = boto3.resource("s3", region_name=MOTO_MOCK_REGION)
     bucket_name = "test_bucket"
