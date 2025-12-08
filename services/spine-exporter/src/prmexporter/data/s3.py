@@ -2,7 +2,7 @@ import gzip
 import logging
 from typing import Dict
 
-from prmexporter.io.file_utils import calculate_number_of_rows
+from prmexporter.data.file_utils import calculate_number_of_rows
 
 logger = logging.getLogger(__name__)
 

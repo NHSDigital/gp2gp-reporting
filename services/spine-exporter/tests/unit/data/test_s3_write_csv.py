@@ -5,7 +5,7 @@ import boto3
 import pytest
 from moto import mock_aws
 
-from prmexporter.io.s3 import S3DataManager, logger
+from prmexporter.data.s3 import S3DataManager, logger
 from tests.builders.file import build_csv_bytes, open_gzip
 
 MOTO_MOCK_REGION = "us-east-1"

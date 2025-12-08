@@ -2,7 +2,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from prmexporter.io.http_client import HttpClient, HttpClientException
+from prmexporter.data.http_client import HttpClient, HttpClientException
 
 
 def _build_mock_response(content=None, messages=None, status_code=200):
