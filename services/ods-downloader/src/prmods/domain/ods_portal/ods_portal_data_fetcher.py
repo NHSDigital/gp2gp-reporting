@@ -50,12 +50,15 @@ class OdsDataSource(Protocol):
     def fetch_all_practices(
         self, show_prison_practices_toggle: Optional[bool] = False
     ) -> List[OrganisationDetails]:
+        # Protocol stub: Implementation is provided in OdsPortalDataFetcher
         pass
 
     def fetch_all_sicbls(self) -> List[OrganisationDetails]:
+        # Protocol stub: Implementation is provided in OdsPortalDataFetcher
         pass
 
     def fetch_practices_for_sicbl(self, sicbl_ods_code: str) -> List[OrganisationDetails]:
+        # Protocol stub: Implementation is provided in OdsPortalDataFetcher
         pass
 
 
