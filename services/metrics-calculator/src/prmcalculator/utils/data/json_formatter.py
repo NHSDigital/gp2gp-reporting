@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from logging import Formatter, LogRecord, makeLogRecord
 
 DEFAULT_LOG_RECORD_ATTRS = vars(makeLogRecord({})).keys()
@@ -17,6 +17,6 @@ class JsonFormatter(Formatter):
                 "level": record.levelname,
                 "message": record.msg,
                 "module": record.module,
-                "time": datetime.utcfromtimestamp(record.created).isoformat(),
+                "time": datetime.fromtimestamp(record.created, tz=timezone.utc).isoformat(),
             }
         )
