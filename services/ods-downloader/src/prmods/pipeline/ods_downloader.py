@@ -63,12 +63,8 @@ class OdsDownloader:
                 "ASID lookup files not found for both current and previous month, exiting...",
                 extra={
                     "event": "ASID_LOOKUP_FILES_NOT_FOUND_IN_S3",
-                    "current_month":
-                        f"{self._config.date_anchor.year}-{self._config.date_anchor.month}"
-                    ,
-                    "previous_month":
-                        f"{previous_month_datetime.year}-{previous_month_datetime.month}"
-                    ,
+                    "current_month": f"{self._config.date_anchor.year}-{self._config.date_anchor.month}",
+                    "previous_month": f"{previous_month_datetime.year}-{previous_month_datetime.month}",
                 },
             )
             raise FileNotFoundError(
