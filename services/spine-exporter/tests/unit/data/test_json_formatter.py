@@ -27,4 +27,3 @@ def test_json_formatter_correctly_formats_record():
     actual = json.loads(actual_json_string)
 
     assert actual == expected
-
