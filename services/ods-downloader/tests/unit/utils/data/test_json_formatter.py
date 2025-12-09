@@ -20,7 +20,7 @@ def test_json_formatter_correctly_formats_record():
         "level": "warning",
         "message": "a message",
         "module": "a.module",
-        "time": "2020-12-14T17:05:13.358049",
+        "time": "2020-12-14T17:05:13.358049+00:00",
         "extra_field": "some_value",
     }
 
