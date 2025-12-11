@@ -1,4 +1,6 @@
-const argv = require("yargs").argv;
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
+const argv = yargs(hideBin(process.argv)).argv;
 const config = require("../s3-config");
 const { getSsmValue } = require("./getSsmValue");
 const { getS3data } = require("./getS3Data");

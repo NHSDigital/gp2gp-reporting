@@ -1,7 +1,10 @@
 const axios = require("axios");
 const fs = require("fs");
 const util = require("util");
-const argv = require("yargs").argv;
+
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
+const argv = yargs(hideBin(process.argv)).argv;
 const config = require("../s3-config");
 
 const writeFile = util.promisify(fs.writeFile);
