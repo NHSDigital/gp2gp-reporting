@@ -75,6 +75,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.14",
     "@types/jest-when": "^3.5.2",
+    "@types/lodash": "^4.17.21",
     "@types/moxios": "^0.4.17",
     "@types/no-scroll": "^2.1.0",
     "@types/react": "^18.3.23",
