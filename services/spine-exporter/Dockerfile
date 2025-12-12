@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.14-slim
 RUN python --version
 COPY . /prmexporter
 

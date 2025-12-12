@@ -7,9 +7,9 @@ import requests
 
 from prmexporter.config import SpineExporterConfig
 from prmexporter.date_converter import convert_to_datetime_string
-from prmexporter.io.http_client import HttpClient
-from prmexporter.io.s3 import S3DataManager
-from prmexporter.io.secret_manager import SsmSecretManager
+from prmexporter.data.http_client import HttpClient
+from prmexporter.data.s3 import S3DataManager
+from prmexporter.data.secret_manager import SsmSecretManager
 from prmexporter.search_dates import SearchDates
 
 logger = logging.getLogger(__name__)

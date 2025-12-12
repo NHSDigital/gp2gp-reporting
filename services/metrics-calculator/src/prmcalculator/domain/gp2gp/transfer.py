@@ -113,14 +113,18 @@ def convert_table_to_transfers(table: pa.Table) -> List[Transfer]:
             ),
             outcome=TransferOutcome(
                 status=_map_transfer_status(transfer["status"]),
-                failure_reason=_map_transfer_failure_reason(transfer["failure_reason"])
-                if transfer["failure_reason"]
-                else None,
+                failure_reason=(
+                    _map_transfer_failure_reason(transfer["failure_reason"])
+                    if transfer["failure_reason"]
+                    else None
+                ),
             ),
             date_requested=transfer["date_requested"].astimezone(UTC),
-            last_sender_message_timestamp=transfer["last_sender_message_timestamp"].astimezone(UTC)
-            if transfer["last_sender_message_timestamp"]
-            else None,
+            last_sender_message_timestamp=(
+                transfer["last_sender_message_timestamp"].astimezone(UTC)
+                if transfer["last_sender_message_timestamp"]
+                else None
+            ),
         )
         for transfer in transfers
     ]
