@@ -3,7 +3,7 @@ import sys
 from os import environ
 
 from prmreportsgenerator.config import PipelineConfig
-from prmreportsgenerator.io.json_formatter import JsonFormatter
+from prmreportsgenerator.data.json_formatter import JsonFormatter
 from prmreportsgenerator.reports_pipeline import ReportsPipeline
 
 logger = logging.getLogger("prmreportsgenerator")

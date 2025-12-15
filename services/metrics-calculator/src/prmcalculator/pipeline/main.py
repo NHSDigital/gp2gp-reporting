@@ -4,7 +4,7 @@ from os import environ
 
 from prmcalculator.pipeline.config import PipelineConfig
 from prmcalculator.pipeline.metrics_calculator import MetricsCalculator
-from prmcalculator.utils.io.json_formatter import JsonFormatter
+from prmcalculator.utils.data.json_formatter import JsonFormatter
 
 logger = logging.getLogger("prmcalculator")
 
