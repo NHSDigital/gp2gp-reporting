@@ -40,7 +40,6 @@ class TransferOutcome:
         self.failure_reason = failure_reason
 
 
-# flake8: noqa: C901
 def _assign_transfer_outcome(
     conversation: Gp2gpConversation, sla_duration: Optional[timedelta]
 ) -> Tuple[TransferStatus, Optional[TransferFailureReason]]:

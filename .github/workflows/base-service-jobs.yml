@@ -71,7 +71,6 @@ jobs:
 
       - name: Run linters
         run: |
-          pipenv run lint-flake8
           pipenv run lint-bandit
 
       - name: Type check

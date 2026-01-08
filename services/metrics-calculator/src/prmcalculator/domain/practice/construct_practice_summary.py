@@ -37,7 +37,6 @@ class PracticeSummary:
     metrics: List[MonthlyMetricsPresentation]
 
 
-# flake8: noqa: E501
 def _construct_monthly_metrics_presentation(
     transfer_month_metrics: TransferMetrics, year: int, month: int
 ) -> MonthlyMetricsPresentation:
