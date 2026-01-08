@@ -6,7 +6,7 @@ This repository contains the pipeline responsible for fetching ODS codes and nam
 
 Common development workflows are defined in the `tasks` script.
 
-This project is written in Python 3.9.
+This project is written in Python 3.14.
 
 ### Recommended developer environment
 
@@ -32,8 +32,8 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 #### Install new python and set as default
 
 ```
-pyenv install 3.9.16
-pyenv global 3.9.16
+pyenv install 3.14
+pyenv global 3.14
 ```
 
 #### Installing pipenv and updating pip
@@ -65,7 +65,7 @@ pipenv --venv
 Now you can configure the IDE. The steps for IntelliJ are following:
 1. Go to `File -> Project Structure -> SDK -> Add SDK -> Python SDK -> Existing environments`
 2. Click on three dots, paste the virtual environment path from before, and point to the python binary.
-   The path should look like this: `/Users/janeDoe/.local/share/virtualenvs/prm-xxxx-ABCD1234/bin/python3.9` (xxxx is the name of this repo)
+   The path should look like this: `/Users/janeDoe/.local/share/virtualenvs/prm-xxxx-ABCD1234/bin/python3.14` (xxxx is the name of this repo)
 
 ### Running the unit tests
 

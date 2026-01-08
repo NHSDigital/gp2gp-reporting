@@ -12,7 +12,7 @@ from prmdata.domain.mi.mi_transfer import MiTransfer
 from prmdata.domain.ods_portal.organisation_metadata_monthly import OrganisationMetadataMonthly
 from prmdata.domain.reporting_window import ReportingWindow
 from prmdata.pipeline.config import TransferClassifierConfig
-from prmdata.pipeline.io import TransferClassifierIO
+from prmdata.pipeline.data import TransferClassifierIO
 from prmdata.pipeline.s3_uri_resolver import TransferClassifierS3UriResolver
 from prmdata.utils.date_converter import convert_to_datetime_string, convert_to_datetimes_string
 from prmdata.utils.input_output.s3 import JsonFileNotFoundException, S3DataManager

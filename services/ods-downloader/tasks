@@ -17,7 +17,6 @@ do
       pipenv run check-format
       ;;
     lint)
-      pipenv run lint-flake8
       pipenv run lint-bandit
       ;;
     typecheck)

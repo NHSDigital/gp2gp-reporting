@@ -4,7 +4,7 @@ from os import environ
 
 from prmods.pipeline.config import OdsPortalConfig
 from prmods.pipeline.ods_downloader import OdsDownloader
-from prmods.utils.io.json_formatter import JsonFormatter
+from prmods.utils.data.json_formatter import JsonFormatter
 
 logger = logging.getLogger("prmods")
 

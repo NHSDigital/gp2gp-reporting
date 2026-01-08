@@ -9,9 +9,9 @@ mock_gp2gp_conversation_observability_probe = Mock()
 
 
 def test_returns_true_given_unacknowledged_duplicate_ehr_and_copcs():
-    gp2gp_messages: List[
-        Message
-    ] = test_cases.unacknowledged_duplicate_with_copcs_and_waiting_for_integration()
+    gp2gp_messages: List[Message] = (
+        test_cases.unacknowledged_duplicate_with_copcs_and_waiting_for_integration()
+    )
     conversation = Gp2gpConversation(gp2gp_messages, mock_gp2gp_conversation_observability_probe)
 
     actual = conversation.contains_unacknowledged_duplicate_ehr_and_copc_fragments()

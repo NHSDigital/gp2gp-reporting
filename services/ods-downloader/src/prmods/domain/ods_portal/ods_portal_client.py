@@ -8,7 +8,7 @@ NEXT_PAGE_HEADER = "Next-Page"
 
 class OdsPortalException(Exception):
     def __init__(self, message, status_code):
-        super(OdsPortalException, self).__init__(message)
+        super(OdsPortalException, self).__init__(message, status_code)
         self.status_code = status_code
 
 

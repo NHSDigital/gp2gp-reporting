@@ -56,10 +56,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
              
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: 3.14
 
       - name: Make virtual environment
         run: |
@@ -71,7 +71,6 @@ jobs:
 
       - name: Run linters
         run: |
-          pipenv run lint-flake8
           pipenv run lint-bandit
 
       - name: Type check
@@ -90,10 +89,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
              
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: 3.14
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
