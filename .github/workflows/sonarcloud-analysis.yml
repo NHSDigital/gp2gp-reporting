@@ -29,20 +29,40 @@ jobs:
           cache: 'npm'
           cache-dependency-path: dashboard/package-lock.json        
 
-      - name: Install dependencies
-        run: npm ci 
-        
-      - name: Run tests
-        run: npm run test
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.14
 
-      - name: Get stubs
-        run: ./tasks get-stubs
-        
-      - name: Build for e2e
-        run: npm run build:ci
-        
-      - name: Run E2E tests
-        run: ./tasks canary-test-e2e
+      - name: Install pipenv
+        run: python -m pip install --upgrade pip pipenv  
+
+      - name: Install Python dependencies and run tests with coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          for pipfile in services/*/Pipfile; do
+            svc_dir="$(dirname "$pipfile")"
+            echo "== Testing $svc_dir =="
+
+            export PIPENV_PIPFILE="$pipfile"
+
+            # If you insist on sync, you must have/produce a lock:
+            if [ ! -f "${svc_dir}/Pipfile.lock" ]; then
+              pipenv lock
+            fi
+            pipenv sync --dev
+
+            pipenv run pytest "${svc_dir}/tests" \
+              --cov="${svc_dir}" \
+              --cov-report="xml:${svc_dir}/coverage.xml"
+          done
+
+      - name: Install Dashboard Typescript dependencies and run tests with coverage
+        working-directory: dashboard
+        run: |
+          npm ci
+          npm test -- --coverage
 
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
