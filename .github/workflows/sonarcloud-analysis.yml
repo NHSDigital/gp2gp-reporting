@@ -47,7 +47,6 @@ jobs:
 
             export PIPENV_PIPFILE="$pipfile"
 
-            # If you insist on sync, you must have/produce a lock:
             if [ ! -f "${svc_dir}/Pipfile.lock" ]; then
               pipenv lock
             fi
