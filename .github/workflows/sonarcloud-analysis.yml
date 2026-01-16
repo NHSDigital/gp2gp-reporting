@@ -26,10 +26,10 @@ jobs:
           cache: 'npm'
           cache-dependency-path: dashboard/package-lock.json        
 
-      - name: Set up Python 3.9
+      - name: Set up Python 3.14
         uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: 3.14
 
       - name: Install pipenv
         run: python -m pip install --upgrade pip pipenv  
