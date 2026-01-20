@@ -14,7 +14,7 @@ from prmods.domain.ods_portal.metadata_service import (
 from prmods.domain.ods_portal.ods_portal_client import OdsPortalClient
 from prmods.domain.ods_portal.ods_portal_data_fetcher import OdsPortalDataFetcher
 from prmods.pipeline.s3_uri_resolver import OdsDownloaderS3UriResolver
-from prmods.utils.io.s3 import S3DataManager
+from prmods.utils.data.s3 import S3DataManager
 
 logger = logging.getLogger(__name__)
 
@@ -43,9 +43,9 @@ class OdsDownloader:
         }
 
     def _add_asid_lookup_month_to_metadata(self, asid_lookup_datetime: datetime):
-        self._output_metadata[
-            "asid-lookup-month"
-        ] = f"{asid_lookup_datetime.year}-{asid_lookup_datetime.month}"
+        self._output_metadata["asid-lookup-month"] = (
+            f"{asid_lookup_datetime.year}-{asid_lookup_datetime.month}"
+        )
 
     def _read_asid_lookup(self, date_anchor: datetime) -> AsidLookup:
         asid_lookup_s3_path = self._uris.asid_lookup(date_anchor)

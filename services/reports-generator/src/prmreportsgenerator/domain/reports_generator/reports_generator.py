@@ -6,6 +6,7 @@ from prmreportsgenerator.domain.reports_generator.error_code_mapping import erro
 
 
 class ReportsGenerator(ABC):
+    @abstractmethod
     def __init__(self):
         pass
 

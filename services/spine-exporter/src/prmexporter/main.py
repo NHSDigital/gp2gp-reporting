@@ -3,7 +3,7 @@ import sys
 from os import environ
 
 from prmexporter.config import SpineExporterConfig
-from prmexporter.io.json_formatter import JsonFormatter
+from prmexporter.data.json_formatter import JsonFormatter
 from prmexporter.spine_exporter import SpineExporter
 
 logger = logging.getLogger("prmexporter")

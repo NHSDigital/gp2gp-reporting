@@ -25,8 +25,8 @@ from prmreportsgenerator.domain.reports_generator.transfer_level_technical_failu
 from prmreportsgenerator.domain.reports_generator.transfer_outcomes_per_supplier_pathway import (
     TransferOutcomesPerSupplierPathwayReportsGenerator,
 )
-from prmreportsgenerator.io.reports_io import ReportsIO, ReportsS3UriResolver
-from prmreportsgenerator.io.s3 import S3DataManager
+from prmreportsgenerator.data.reports_io import ReportsIO, ReportsS3UriResolver
+from prmreportsgenerator.data.s3 import S3DataManager
 from prmreportsgenerator.report_name import ReportName
 from prmreportsgenerator.utils.date_helpers import convert_to_datetime_string
 

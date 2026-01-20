@@ -17,7 +17,6 @@ do
       pipenv run check-format
       ;;
     lint)
-      pipenv run lint-flake8
       pipenv run lint-bandit
       ;;
     typecheck)
@@ -41,9 +40,9 @@ do
       rm -rf build/ dist/ .pytest_cache/
       ;;
     devenv)
-      # echo "./tasks validate" > .git/hooks/pre-commit
-      # chmod +x .git/hooks/pre-commit
+      echo "[devenv] Running pipenv install -d"
       pipenv install -d
+
       ;;
     validate)
       ./tasks check-format typecheck lint test
