@@ -7,18 +7,18 @@ name = "pypi"
 prm-spine-exporter = {editable = true, path = "."}
 
 [dev-packages]
-black = "==25.11.0"
-bandit = "~=1.9.2"
+black = "==26.1.0"
+bandit = "~=1.9.3"
 freezegun = "~=1.5.5"
 isort = "~=7.0.0"
-moto = {version = "~=5.1.18", extras = ["server"]}
-mypy = "~=1.19.0"
+moto = {version = "~=5.1.20", extras = ["server"]}
+mypy = "~=1.19.1"
 pytest-cov = "~=7.0.0"
-pytest = "~=9.0.1"
-types-freezegun = "~=1.1"
-types-requests = "~=2.26"
+pytest = "~=9.0.2"
+types-freezegun = "~=1.1.10"
+types-requests = "~=2.32"
 types-python-dateutil = "~=2.9"
-urllib3 = "==2.6.0"
+urllib3 = "==2.6.3"
 
 [requires]
 python_version = "3.14"
