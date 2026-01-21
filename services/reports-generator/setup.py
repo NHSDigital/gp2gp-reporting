@@ -9,7 +9,7 @@ setup(
         "python-dateutil>=2.8",
         "boto3>=1.18",
         "urllib3==2.6.3",
-        "PyArrow==22.0.0",
+        "PyArrow==23.0.0",
         "polars~=0.20.31",
     ],
 )
