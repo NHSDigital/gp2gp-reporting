@@ -9,7 +9,7 @@ setup(
         "python-dateutil>=2.8",
         "requests>=2.2",
         "boto3>=1.29.7",
-        "urllib3==1.26.18",
+        "urllib3==2.6.3",
     ],
     entry_points={
         "console_scripts": [
