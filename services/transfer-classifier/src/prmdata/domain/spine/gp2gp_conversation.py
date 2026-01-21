@@ -95,7 +95,7 @@ class Gp2gpConversation:
 
         effective_request_completed = _find_effective_request_completed(self._request_completed)
         if effective_request_completed is not None:
-            (self._effective_ehr, self._effective_ehr_ack) = effective_request_completed
+            self._effective_ehr, self._effective_ehr_ack = effective_request_completed
 
         self._sender_messages = self._find_sender_messages(messages)
 
