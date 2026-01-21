@@ -33,7 +33,7 @@ def calculate_national_metrics_data(
 ) -> NationalMetricsPresentation:
     observability_probe.record_calculating_national_metrics(reporting_window)
     metric_month_transfers = filter_transfers_by_date_requested(transfers, reporting_window)
-    (year, month) = reporting_window.last_metric_month
+    year, month = reporting_window.last_metric_month
     national_metrics = NationalMetricsMonth(
         transfers=metric_month_transfers,
         year=year,

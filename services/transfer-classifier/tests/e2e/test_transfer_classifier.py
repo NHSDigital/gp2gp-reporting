@@ -191,7 +191,7 @@ def _upload_template_spine_data(datadir, input_spine_data_bucket, list_dates):
 
 def _get_expected_transfers(datadir, expected_date):
     days_with_data = [(2019, 12, day) for day in [2, 3, 5, 20, 30, 31]] + [(2020, 1, 2)]
-    (year, data_month, data_day) = expected_date
+    year, data_month, data_day = expected_date
     month = add_leading_zero(data_month)
     day = add_leading_zero(data_day)
     if expected_date in days_with_data:
