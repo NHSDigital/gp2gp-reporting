@@ -95,6 +95,7 @@ jobs:
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       terraform_stack: gp2gp_dashboard
       image_tag: gp2gp-dashboard
+      hyphenated_alias: gp2gp-dashboard
       build_lambda: true
       git_ref: ${{ github.ref }}
     secrets: inherit
@@ -107,5 +108,6 @@ jobs:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       terraform_stack: step_function
+      hyphenated_alias: step-function
       git_ref: ${{ github.ref }}
     secrets: inherit
