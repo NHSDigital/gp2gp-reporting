@@ -97,7 +97,6 @@ jobs:
       image_tag: gp2gp-dashboard
       hyphenated_alias: gp2gp-dashboard
       build_lambda: true
-      git_ref: ${{ github.ref }}
     secrets: inherit
 
   redeploy_gp2gp_infrastructure_step_functions:
