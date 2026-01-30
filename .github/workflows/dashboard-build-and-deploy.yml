@@ -108,5 +108,4 @@ jobs:
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       terraform_stack: step_function
       hyphenated_alias: step-function
-      git_ref: ${{ github.ref }}
     secrets: inherit
