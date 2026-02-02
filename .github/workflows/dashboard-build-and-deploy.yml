@@ -92,12 +92,11 @@ jobs:
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
     with:
       environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      is_deployment: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
       terraform_stack: gp2gp_dashboard
       image_tag: gp2gp-dashboard
       hyphenated_alias: gp2gp-dashboard
       build_lambda: true
-      git_ref: ${{ github.ref }}
     secrets: inherit
 
   redeploy_gp2gp_infrastructure_step_functions:
@@ -106,8 +105,7 @@ jobs:
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
     with:
       environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      is_deployment: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
       terraform_stack: step_function
       hyphenated_alias: step-function
-      git_ref: ${{ github.ref }}
     secrets: inherit
