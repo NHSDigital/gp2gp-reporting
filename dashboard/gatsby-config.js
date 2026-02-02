@@ -6,7 +6,7 @@ module.exports = {
         bucketName: `${process.env.DEPLOYMENT_BUCKET}`,
         region: "eu-west-2",
         parallelLimit: 1000,
-        acl: "bucket-owner-full-control",
+        acl: null,
       },
     },
     {
