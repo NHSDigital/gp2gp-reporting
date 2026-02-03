@@ -19,6 +19,7 @@ types-freezegun = "~=1.1.10"
 types-requests = "~=2.32"
 types-python-dateutil = "~=2.9"
 urllib3 = "==2.6.3"
+setuptools = "=80.10.2"
 
 [requires]
 python_version = "3.14"
