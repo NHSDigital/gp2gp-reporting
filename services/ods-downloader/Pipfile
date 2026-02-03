@@ -19,7 +19,7 @@ freezegun = "~=1.5.5"
 pytest-cov = "~=7.0.0"
 pytest = "~=9.0.2"
 urllib3 = "==2.6.3"
-setuptools = "=80.10.2"
+setuptools = "==80.10.2"
 
 [requires]
 python_version = "3.14"

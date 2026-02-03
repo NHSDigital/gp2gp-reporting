@@ -20,7 +20,7 @@ moto = {version = "~=5.1.20", extras = ["server"]}
 pytest = "~=9.0.2"
 boto3-stubs = {extras = ["s3"], version = "1.42.3"}
 urllib3 = "==2.6.3"
-setuptools = "=80.10.2"
+setuptools = "==80.10.2"
 
 [requires]
 python_version = "3.14"
