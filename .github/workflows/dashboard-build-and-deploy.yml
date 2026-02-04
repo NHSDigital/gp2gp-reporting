@@ -94,7 +94,7 @@ jobs:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
       terraform_stack: gp2gp_dashboard
-      image_tag: gp2gp-dashboard
+      image_tag: true
       hyphenated_alias: gp2gp-dashboard
       build_lambda: true
     secrets: inherit
