@@ -160,6 +160,7 @@ jobs:
       image_tag: ${{ inputs.service_name }}
       build_lambda: true
       git_ref: ${{ github.ref }}
+      hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
 
   redeploy_step_functions_on_infra:
@@ -171,4 +172,5 @@ jobs:
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       terraform_stack: step_function
       git_ref: ${{ github.ref }}
+      hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
