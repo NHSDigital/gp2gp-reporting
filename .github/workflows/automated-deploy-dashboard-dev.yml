@@ -2,18 +2,18 @@ name: "Z-AUTOMATED: Deploy Dashboard - Dev"
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'dashboard/**'
-      - 'deploy-dashboard-dev.yml'
-      - 'automated-deploy-dashboard-dev.yml'
+      - "dashboard/**"
+      - ".github/workflows/automated-deploy-dashboard-dev.yml"
+      - ".github/workflows/deploy-dashboard-dev.yml"
 
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'dashboard/**'
-      - 'deploy-dashboard-dev.yml'
-      - 'automated-deploy-dashboard-dev.yml'
+      - "dashboard/**"
+      - ".github/workflows/automated-deploy-dashboard-dev.yml"
+      - ".github/workflows/deploy-dashboard-dev.yml"
 
 permissions:
   pull-requests: write
@@ -24,24 +24,24 @@ jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
-          run:
-            working-directory: ./dashboard
+      run:
+        working-directory: ./dashboard
     steps:
       - uses: actions/checkout@v4
-       
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: dashboard/.nvmrc
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
-          
+
       - name: Install dependencies
-        run: npm ci 
-        
+        run: npm ci
+
       - name: Run tests
         run: npm run test
-        
+
   test-e2e:
     runs-on: ubuntu-latest
     defaults:
@@ -50,24 +50,24 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: dashboard/.nvmrc
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
-        
+
       - name: Get stubs
         run: ./tasks get-stubs
-        
+
       - name: Build for e2e
         run: npm run build:ci
-        
+
       - name: Run E2E tests
         run: ./tasks canary-test-e2e
 
   build-and-publish-ui:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: deploy-dashboard-dev.yml
+    uses: ./.github/workflows/deploy-dashboard-dev.yml
     secrets: inherit

@@ -27,7 +27,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
           role-skip-session-tagging: true
           aws-region: ${{ vars.AWS_REGION }}
- 
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: dashboard/.nvmrc
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
 
       - name: Install dependencies
@@ -69,7 +69,7 @@ jobs:
             REF_TAG="${GITHUB_REF_NAME//\//-}"
             docker push "$ECR_URI:$REF_TAG"
           fi
-          
+
   redeploy_gp2gp_infrastructure_dashboard:
     name: Redeploy gp2gp infrastructure dashboard
     needs: [build-and-publish-ui]
