@@ -89,7 +89,7 @@ jobs:
   redeploy_gp2gp_infrastructure_dashboard:
     name: Redeploy gp2gp infrastructure dashboard
     needs: [build-and-publish-ui]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
@@ -102,7 +102,7 @@ jobs:
   redeploy_gp2gp_infrastructure_step_functions:
     name: Redeploy gp2gp infrastructure step functions
     needs: [redeploy_gp2gp_infrastructure_dashboard]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
