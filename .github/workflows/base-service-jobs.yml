@@ -159,7 +159,6 @@ jobs:
       terraform_stack: ${{ needs.transform-service-name.outputs.sanitized_service_name }}
       has_image: true
       build_lambda: true
-      git_ref: ${{ github.ref }}
       hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
 
@@ -171,6 +170,5 @@ jobs:
       environment: ${{ inputs.environment }}
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       terraform_stack: step_function
-      git_ref: ${{ github.ref }}
       hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
