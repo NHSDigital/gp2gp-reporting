@@ -1,19 +1,19 @@
-name: Dashboard CI
+name: "Z-AUTOMATED: Deploy Dashboard - Dev"
 
 on:
   push:
     branches: [ main ]
     paths:
       - 'dashboard/**'
-      - '.github/workflows/dashboard-build-and-deploy.yml'
-      - '.github/workflows/dashboard-ci.yml'
+      - 'deploy-dashboard-dev.yml'
+      - 'automated-deploy-dashboard-dev.yml'
 
   pull_request:
     branches: [ main ]
     paths:
       - 'dashboard/**'
-      - '.github/workflows/dashboard-build-and-deploy.yml'
-      - '.github/workflows/dashboard-ci.yml'
+      - 'deploy-dashboard-dev.yml'
+      - 'automated-deploy-dashboard-dev.yml'
 
 permissions:
   pull-requests: write
@@ -69,7 +69,5 @@ jobs:
 
   build-and-publish-ui:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/dashboard-build-and-deploy.yml
-    with:
-      environment: dev
+    uses: deploy-dashboard-dev.yml
     secrets: inherit
