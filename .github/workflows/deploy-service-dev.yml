@@ -19,7 +19,7 @@ on:
         description: "Do you want changes deployed?"
         required: true
         type: boolean
-        default: false    
+        default: false
   workflow_call:
     inputs:
       service_name:
@@ -45,7 +45,7 @@ jobs:
         working-directory: ./services/${{ inputs.service_name }}
     steps:
       - uses: actions/checkout@v4
-             
+
       - name: Set up Python 3.14
         uses: actions/setup-python@v6
         with:
@@ -68,7 +68,7 @@ jobs:
 
       - name: Run tests
         run: pipenv run test
-              
+
   build-and-publish-service:
     if: inputs.is_deployment
     environment: dev
@@ -78,7 +78,7 @@ jobs:
         working-directory: ./services/${{ inputs.service_name }}
     steps:
       - uses: actions/checkout@v4
-             
+
       - name: Set up Python 3.14
         uses: actions/setup-python@v6
         with:
@@ -91,7 +91,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
           role-skip-session-tagging: true
           aws-region: ${{ vars.AWS_REGION }}
- 
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
@@ -153,7 +153,7 @@ jobs:
     secrets: inherit
 
   redeploy_step_functions_on_infra:
-    name: Redeploy step functions on infrastructure 
+    name: Redeploy step functions on infrastructure
     needs: [redeploy_image_on_infra]
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
