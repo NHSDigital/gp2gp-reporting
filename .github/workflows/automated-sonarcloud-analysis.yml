@@ -1,4 +1,4 @@
-name: SonarCloud-Analysis
+name: "Z-AUTOMATED: SonarCloud-Analysis"
 on:
   push:
     branches:

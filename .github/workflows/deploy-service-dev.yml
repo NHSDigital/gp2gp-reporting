@@ -1,15 +1,10 @@
-name: Services Build and Deploy to Dev
+name: Deploy Service - Dev
+
+run-name: "${{ github.event.inputs.service_name }} | Is deployment? = ${{ github.event.inputs.is_deployment }}"
 
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        default: "dev"
-        description: "Which environment should this run against"
-        required: true
-        type: choice
-        options:
-          - dev
       service_name:
         description: "Which Service are we running against?"
         required: true
@@ -27,11 +22,6 @@ on:
         default: false    
   workflow_call:
     inputs:
-      environment:
-        description: "Which Environment settings to use."
-        required: true
-        type: string
-        default: "dev"
       service_name:
         description: "Which Service are we running against?"
         required: true
@@ -81,7 +71,7 @@ jobs:
               
   build-and-publish-service:
     if: inputs.is_deployment
-    environment: ${{ inputs.environment }}
+    environment: dev
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -152,23 +142,23 @@ jobs:
   redeploy_image_on_infra:
     name: Redeploy image on Infrastructure
     needs: [transform-service-name]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
-      environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      environment: dev
+      is_deployment: ${{ inputs.is_deployment }}
       terraform_stack: ${{ needs.transform-service-name.outputs.sanitized_service_name }}
-      image_tag: ${{ inputs.service_name }}
+      has_image: true
       build_lambda: true
-      git_ref: ${{ github.ref }}
+      hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
 
   redeploy_step_functions_on_infra:
     name: Redeploy step functions on infrastructure 
     needs: [redeploy_image_on_infra]
-    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v3
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
-      environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      environment: dev
+      is_deployment: ${{ inputs.is_deployment }}
       terraform_stack: step_function
-      git_ref: ${{ github.ref }}
+      hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
