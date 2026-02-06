@@ -160,5 +160,5 @@ jobs:
       environment: dev
       is_deployment: ${{ inputs.is_deployment }}
       terraform_stack: step_function
-      hyphenated_alias: ${{ inputs.service_name }}
+      hyphenated_alias: step-function
     secrets: inherit

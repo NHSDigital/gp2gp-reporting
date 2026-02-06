@@ -5,7 +5,8 @@ COPY . /prmexporter
 ARG IMAGE_TAG
 ENV BUILD_TAG=${IMAGE_TAG}
 
-RUN pip install setuptools && \
+RUN pip install --upgrade pip && \
+    pip install setuptools && \
     cd /prmexporter && \
     python setup.py install
 
