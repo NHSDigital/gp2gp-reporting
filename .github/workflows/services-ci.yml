@@ -1,4 +1,4 @@
-name: Services CI
+name: "Z-AUTOMATED: Deploy Services - Dev"
 
 on:
   push:

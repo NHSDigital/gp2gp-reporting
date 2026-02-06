@@ -1,4 +1,6 @@
-name: Services Build and Deploy to Dev
+name: Deploy Service - Dev
+
+run-name: "${{ github.event.inputs.environment }} | ${{ github.event.inputs.service_name }} | Is deployment? = ${{ github.event.inputs.is_deployment }}"
 
 on:
   workflow_dispatch:
@@ -155,7 +157,7 @@ jobs:
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
       environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      is_deployment: ${{ inputs.is_deployment }}
       terraform_stack: ${{ needs.transform-service-name.outputs.sanitized_service_name }}
       has_image: true
       build_lambda: true
@@ -168,7 +170,7 @@ jobs:
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
       environment: ${{ inputs.environment }}
-      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      is_deployment: ${{ inputs.service_name }}
       terraform_stack: step_function
       hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
