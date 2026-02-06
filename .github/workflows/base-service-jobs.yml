@@ -170,7 +170,7 @@ jobs:
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
       environment: ${{ inputs.environment }}
-      is_deployment: ${{ inputs.service_name }}
+      is_deployment: ${{ inputs.is_deployment }}
       terraform_stack: step_function
       hyphenated_alias: ${{ inputs.service_name }}
     secrets: inherit
