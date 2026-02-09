@@ -93,3 +93,22 @@ jobs:
       terraform_stack: step_function
       hyphenated_alias: step-function
     secrets: inherit
+
+  dashboard_build_and_deploy:
+    name: Build and deploy dashboard via dashboard pipeline step function
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        id: credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          mask-aws-account-id: true
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
+          role-skip-session-tagging: true
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Run step function
+        run: |
+          aws stepfunctions start-execution \
+            --state-machine-arn "arn:aws:states:eu-west-2:${{steps.credentials.outputs.aws-account-id}}:stateMachine:dashboard-pipeline" \
+            --input '{"SKIP_METRICS": true,"time": "2026-02-02T00:00:00Z"}'
