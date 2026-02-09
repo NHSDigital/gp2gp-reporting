@@ -1,4 +1,4 @@
-FROM node:18.13-bullseye-slim
+FROM node:24-trixie-slim
 
 # Copy only required files for building and deploying pipeline
 COPY analytics-config.json /tmp/analytics-config.json
