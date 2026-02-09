@@ -82,8 +82,8 @@ jobs:
     secrets: inherit
 
   transfer-classifier:
-    needs: get-changed-files
-    if: contains(needs.get-changed-files.outputs.changed, 'services/transfer-classifier/') || contains(needs.get-changed-files.outputs.changed, '.github/')
+    needs: [get-changed-files, spine-exporter]
+    if: always() && (contains(needs.get-changed-files.outputs.changed, 'services/transfer-classifier/') || contains(needs.get-changed-files.outputs.changed, '.github/')) && (needs.spine-exporter.result == 'success' || needs.spine-exporter.result == 'skipped')
     uses: ./.github/workflows/deploy-service-dev.yml
     with:
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
