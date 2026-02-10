@@ -5,8 +5,9 @@ COPY . /prmreportsgenerator
 ARG IMAGE_TAG
 ENV BUILD_TAG=${IMAGE_TAG}
 
-RUN pip install setuptools && \
-    cd /prmexporter && \
+RUN pip install --upgrade pip && \
+    pip install setuptools && \
+    cd /prmreportsgenerator && \
     python setup.py install
 
 ENTRYPOINT ["python", "-m", "prmreportsgenerator.main"]

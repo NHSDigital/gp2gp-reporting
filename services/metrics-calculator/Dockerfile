@@ -5,8 +5,9 @@ COPY . /prmcalculator
 ARG IMAGE_TAG
 ENV BUILD_TAG=${IMAGE_TAG}
 
-RUN pip install setuptools && \
-    cd /prmexporter && \
+RUN pip install --upgrade pip && \
+    pip install setuptools && \
+    cd /prmcalculator && \
     python setup.py install
 
 ENTRYPOINT ["python", "-m", "prmcalculator.pipeline.main"]
