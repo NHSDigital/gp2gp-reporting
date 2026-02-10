@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es6",
     "allowJs": true,
     "checkJs": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./public",
     "rootDir": "./",
     "pretty": true,
@@ -14,8 +14,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    "types": ["jest", "node", "@testing-library/jest-dom", "react", "react-dom"]
   },
-  "include": ["dashboard/src/**/*", "./custom.d.ts"],
+  "include": ["dashboard/src/**/*","dashboard/scripts/", "./custom.d.ts"],
   "exclude": ["node_modules"]
 }

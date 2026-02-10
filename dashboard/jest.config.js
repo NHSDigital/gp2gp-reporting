@@ -2,12 +2,15 @@ module.exports = {
   transform: {
     "^.+\\.jsx?$": "<rootDir>/jest-preprocess.js",
     "\\.svg$": "<rootDir>/jest-svg-transformer.js",
+    "^.+\\.mjs$": "<rootDir>/jest-preprocess.js",
   },
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
   },
   testPathIgnorePatterns: ["node_modules", ".cache", "public", "e2e"],
-  transformIgnorePatterns: ["node_modules/(?!(gatsby)/)"],
+  transformIgnorePatterns: [
+    "node_modules/(?!(gatsby|yargs|y18n|yargs-parser)/)",
+  ],
   globals: {
     __PATH_PREFIX__: "",
   },
