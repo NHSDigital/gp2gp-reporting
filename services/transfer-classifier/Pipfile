@@ -16,7 +16,7 @@ types-freezegun = "~=1.1.10"
 pytest-datadir = "~=1.8.0"
 freezegun = "~=1.5.5"
 pytest-cov = "~=7.0.0"
-moto = {version = "~=5.1.20", extras = ["server"]}
+moto = {version = "~=5.1.21", extras = ["server"]}
 pytest = "~=9.0.2"
 boto3-stubs = {extras = ["s3"], version = "1.42.3"}
 urllib3 = "==2.6.3"
