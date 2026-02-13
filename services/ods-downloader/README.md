@@ -122,3 +122,16 @@ Perform the following steps:
 If you see the below notice when trying to activate the python virtual environment, run `deactivate` before trying again.
 
 > Courtesy Notice: Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set PIPENV_IGNORE_VIRTUALENVS=1 to force pipenv to ignore that environment and create its own instead. You can set PIPENV_VERBOSITY=-1 to suppress this warning.
+
+### Running the ods-downloader pipeline manually
+
+1. Send the asidLookup.csv to the gp-registrations-data email address [Manually triggering store_asid_lookup_lambda](https://github.com/NHSDigital/gp2gp-reporting-infrastructure/blob/main/lambdas/store_asid_lookup/README.md).
+1. This will then trigger the Ods-Downloader pipeline.
+1. It will then read from the `prm-gp2gp-asid-lookup-{env}` which is populated by the store asid lookup lambda. It will then grab the relevant practices and organisation metadata.
+1. It will then write the Organisation metadata to the output bucket `prm-gp2gp-ods-metadata-{env}/{version}/{year}/{month}`
+1. If these operations are run successfully then the pipelines execution will return as a success.
+1. NOTE: If you have already populated the S3 lookup bucket then you may retrigger the pipeline with this execution input:
+```json
+    {
+      "time": "YYY-MM-01T00:00:00Z"
+    }
