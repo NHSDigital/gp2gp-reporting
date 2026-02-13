@@ -89,6 +89,44 @@ Common development workflows are defined in the `tasks` script.
 
 This project is written in Python 3.14.
 
+### Running the reports-generator manually for testing
+#### There are 3 different paths that can be taken after triggering this pipeline:
+- Daily/weekly reporting window
+- Monthly reporting window
+- Custom reporting window
+
+Daily
+```json
+{
+  "ALERT_ENABLED": "true",
+  "CONVERSATION_CUTOFF_DAYS": "0",
+  "NUMBER_OF_DAYS": "1",
+  "REPORT_NAME": "TRANSFER_OUTCOMES_PER_SUPPLIER_PATHWAY",
+  "SEND_EMAIL_NOTIFICATION": "true"
+}
+```
+Monthly
+```json
+{
+  "ALERT_ENABLED": "true",
+  "CONVERSATION_CUTOFF_DAYS": "0",
+  "NUMBER_OF_MONTHS": "1",
+  "REPORT_NAME": "TRANSFER_OUTCOMES_PER_SUPPLIER_PATHWAY",
+  "SEND_EMAIL_NOTIFICATION": "true"
+}
+```
+Custom
+```json
+{
+  "ALERT_ENABLED": "true",
+  "CONVERSATION_CUTOFF_DAYS": "0",
+  "START_DATETIME": "2026-02-01T00:00Z",
+  "END_DATETIME": "2026-02-06T00:00Z",
+  "REPORT_NAME": "TRANSFER_OUTCOMES_PER_SUPPLIER_PATHWAY",
+  "SEND_EMAIL_NOTIFICATION": "true"
+}
+```
+
 ### Recommended developer environment
 
 - [pyenv](https://github.com/pyenv/pyenv) to easily switch Python versions.

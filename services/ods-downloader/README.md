@@ -123,7 +123,7 @@ If you see the below notice when trying to activate the python virtual environme
 
 > Courtesy Notice: Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set PIPENV_IGNORE_VIRTUALENVS=1 to force pipenv to ignore that environment and create its own instead. You can set PIPENV_VERBOSITY=-1 to suppress this warning.
 
-### Running the ods-downloader pipeline manually
+### Running the ods-downloader pipeline manually for testing
 
 1. Send the asidLookup.csv to the gp-registrations-data email address [Manually triggering store_asid_lookup_lambda](https://github.com/NHSDigital/gp2gp-reporting-infrastructure/blob/main/lambdas/store_asid_lookup/README.md).
 1. This will then trigger the Ods-Downloader pipeline.
