@@ -9,6 +9,10 @@ Alternatively, you can download one of the docker containers already published t
 
 The main code entrypoint is via `python -m prmexporter.main`.
 
+## Running the Spine-exporter manually for testing 
+
+
+prm-gp2gp-raw-spine-data-{env}
 
 ## Developing
 
