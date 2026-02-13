@@ -1,7 +1,9 @@
 FROM python:3.14-slim
 
 WORKDIR /prmods
-COPY . .
+COPY ./build ./build
+COPY ./src ./src
+COPY setup.py /
 
 ARG IMAGE_TAG
 ENV BUILD_TAG=${IMAGE_TAG}
