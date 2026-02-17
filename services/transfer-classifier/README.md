@@ -28,6 +28,22 @@ index="spine2vfmmonitor" service="gp2gp" logReference="MPS0053d"
 - When START_DATETIME and END_DATETIME are both passed (which both must be at midnight), then the data retrieved will be from the daily spine exporter output, and it will output a daily transfer parquet file for each date within the date range.
 Example of ISO-8601 datetime that is specified for START_DATETIME or END_DATETIME - "2022-01-19T00:00:00Z".
 
+### Running the transfer-classifier manually for testing 
+
+Whilst the transfer-classifier will be run and tested during the spine-exporter step-functions execution 
+
+```json
+{
+  "CONVERSATION_CUTOFF_DAYS": "8",
+  "START_DATETIME": "2026-01-01T00:00:00Z",
+  "END_DATETIME": "2026-02-01T00:00:00Z",
+  "OUTPUT_TRANSFER_DATA_BUCKET": "prm-gp2gp-transfer-data-{env}",
+  "MI": false
+}
+```
+The MI key is now deprecated but still needs to be passed in. For every day in the reporting window it will output
+each day to the S3 bucket {prm-gp2gp-transfer-data-{env}} separately into the given conversation cut-off path 
+
 #### Environment variables
 
 Configuration is achieved via the following environment variables:

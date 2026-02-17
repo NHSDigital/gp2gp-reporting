@@ -16,6 +16,20 @@ Configuration is achieved via the following environment variables:
 | NATIONAL_METRICS_S3_PATH_PARAM_NAME      | String that is the AWS SSM Parameter Name where the National Metrics S3 path will be outputted to |
 | PRACTICE_METRICS_S3_PATH_PARAM_NAME      | String that is the AWS SSM Parameter Name where the Practice Metrics S3 path will be outputted to |
 
+
+### Running the metrics-calculator manually for testing 
+
+The Metrics-calculator service is ran within the dashboard pipeline state-machine, in order to trigger this manually for testing you will need to navigate in the aws
+console to step-functions/statemachines/dashboard-pipeline and trigger an execution with the following input 
+```json 
+{
+  "SKIP_METRICS": true,
+  "time": "2026-02-16"
+}
+```
+Following the execution of this you will see the metrics-calculator task running before either the validate-metrics lambda is called if it is successful or the GP2GP Dashboard
+Alert lambda is called on a failure.
+
 ## Developing
 
 Common development workflows are defined in the `tasks` script.

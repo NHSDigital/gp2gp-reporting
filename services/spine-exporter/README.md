@@ -10,9 +10,20 @@ Alternatively, you can download one of the docker containers already published t
 The main code entrypoint is via `python -m prmexporter.main`.
 
 ## Running the Spine-exporter manually for testing 
+The spine-exporter is usually triggered by AWS EventBridge (See 'Amazon EventBridge/Scheduler/Scheduled rules' for details).
 
+In order to manually trigger the 'daily-spine-exporter-and-transfer-classifier' step-function you will need to
+navigate to the relevant state-machine in the aws console and use the following input.
+```json
+{
+  "time": "2026-02-16T05:37:00Z",
+  "detail": {}
+}
+```
+After the spine data is collected it will be placed into the prm-gp2gp-raw-spine-data-{env} S3 bucket, where it can be used by the 
+transfer-classifier stage of the state-machine, which will take the new raw GP2GP events pulled by the spine exporter task and combine them at the conversation level
+to generate useful information about each GP2GP transfer. This task will also pull data from the ods-downloader task which gives details such as the practice name, ICB name etc.
 
-prm-gp2gp-raw-spine-data-{env}
 
 ## Developing
 
