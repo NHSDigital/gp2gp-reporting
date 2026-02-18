@@ -1,13 +1,13 @@
 FROM python:3.14-slim
 
-COPY . /prmcalculator
+WORKDIR /prmcalculator
+COPY ./src ./src
+COPY setup.py .
 
 ARG IMAGE_TAG
 ENV BUILD_TAG=${IMAGE_TAG}
 
-RUN pip install --upgrade pip && \
-    pip install setuptools && \
-    cd /prmcalculator && \
-    python setup.py install
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install .
 
 ENTRYPOINT ["python", "-m", "prmcalculator.pipeline.main"]
