@@ -133,5 +133,9 @@ If you see the below notice when trying to activate the python virtual environme
 1. NOTE: If you have already populated the S3 lookup bucket then you may retrigger the pipeline with this execution input:
 ```json
     {
-      "time": "YYY-MM-01T00:00:00Z"
+      "time": "YYYY-MM-01T00:00:00Z"
     }
+```
+
+Not automatically calling the pipeline? may need manual triggering 
+triggered on the 1st of the month by ??? 
