@@ -89,3 +89,15 @@ jobs:
       is_deployment: ${{ github.ref == 'refs/heads/main' }}
       service_name: transfer-classifier
     secrets: inherit
+
+  redeploy_step_functions_on_infra:
+    name: Redeploy step functions on infrastructure
+    needs: [metrics-calculator, ods-downloader, reports-generator, transfer-classifier]
+    if: always() && (needs.metrics-calculator.result == 'success' || needs.ods-downloader.result == 'success' || needs.reports-generator.result == 'success' needs.transfer-classifier.result == 'success') && (needs.metrics-calculator.result == 'success' || needs.metrics-calculator.result == 'skipped') && (needs.ods-downloader.result == 'success' || needs.ods-downloader.result == 'skipped') && (needs.reports-generator.result == 'success' || needs.reports-generator.result == 'skipped') && (needs.transfer-classifier.result == 'success' || needs.transfer-classifier.result == 'skipped')
+    uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
+    with:
+      environment: dev
+      is_deployment: ${{ github.ref == 'refs/heads/main' }}
+      terraform_stack: step_function
+      hyphenated_alias: step-function
+    secrets: inherit

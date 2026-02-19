@@ -156,6 +156,7 @@ jobs:
     name: Redeploy step functions on infrastructure
     needs: [redeploy_image_on_infra]
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
+    if: github.event_name == 'workflow_dispatch'
     with:
       environment: dev
       is_deployment: ${{ inputs.is_deployment }}
