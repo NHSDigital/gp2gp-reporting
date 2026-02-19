@@ -1,5 +1,9 @@
 FROM python:3.14-slim
 
+# Update the package list and upgrade all installed system packages
+RUN apt-get update && apt-get upgrade -y && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /prmdata
 COPY ./src ./src
 COPY setup.py .
