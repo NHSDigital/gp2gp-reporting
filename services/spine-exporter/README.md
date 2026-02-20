@@ -111,14 +111,15 @@ Note: date interpretation is using UTC.
 #### Environment variables
 Configuration is achieved via the following environment variables:
 
-| Environment variable        | Description                                                                                                                                                                                                   | 
-|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SPLUNK_URL                  | URL of the Splunk API                                                                                                                                                                                         |
-| SPLUNK_API_TOKEN_PARAM_NAME | AWS Parameter store name which contains the Splunk API token                                                                                                                                                  |
-| OUTPUT_SPINE_DATA_BUCKET    | Output S3 Bucket to write the Spine logs                                                                                                                                                                      |
-| BUILD_TAG                   | Optional - Unique identifier for version of code build tag (e.g. short git hash)                                                                                                                              |
-| START_DATETIME              | Optional - The start date and time for the search results date range from Splunk API (must be at midnight)                                                                                                    |
-| END_DATETIME                | Optional - The end date and time for the search results date range from Splunk API (must be at midnight)                                                                                                      |
+| Environment variable        | Description                                                                                                                                                                                                  | 
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SPLUNK_URL                  | URL of the Splunk API                                                                                                                                                                                        |
+| SPLUNK_INDEX                | Name of the Splunk index to communicate with. Prod & Non-Prod use different indexes                                                                                                                          |
+| SPLUNK_API_TOKEN_PARAM_NAME | AWS Parameter store name which contains the Splunk API token                                                                                                                                                 |
+| OUTPUT_SPINE_DATA_BUCKET    | Output S3 Bucket to write the Spine logs                                                                                                                                                                     |
+| BUILD_TAG                   | Optional - Unique identifier for version of code build tag (e.g. short git hash)                                                                                                                             |
+| START_DATETIME              | Optional - The start date and time for the search results date range from Splunk API (must be at midnight)                                                                                                   |
+| END_DATETIME                | Optional - The end date and time for the search results date range from Splunk API (must be at midnight)                                                                                                     |
 | SEARCH_WAIT_TIME_IN_SECONDS | Optional - Wait time before making another request to Splunk API (default is 0). When running Spine Exporter task manually for more than 1 day, set to 30 to make sure Splunk is not overloaded with requests |
 
 

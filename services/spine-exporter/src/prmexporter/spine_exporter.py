@@ -42,14 +42,21 @@ class SpineExporter:
     def _get_api_auth_token(self) -> str:
         return self._ssm_secret_manager.get_secret(self._config.splunk_api_token_param_name)
 
-    def _fetch_spine_data(self, search_start_time: str, search_end_time: str) -> bytes:
+    def _fetch_spine_data(
+            self,
+            search_start_time: str,
+            search_end_time: str,
+            splunk_index: str,
+    ) -> bytes:
         request_body = {
             "output_mode": "csv",
             "earliest_time": search_start_time,
             "latest_time": search_end_time,
-            "search": """search index=\"spine2vfmmonitor\" service=\"gp2gp\" logReference=\"MPS0053d\"
-            | table _time, conversationID, GUID, interactionID, messageSender,
-            messageRecipient, messageRef, jdiEvent, toSystem, fromSystem""",
+            "search": (
+                f"search index=\"{splunk_index}\" service=\"gp2gp\" logReference=\"MPS0053d\"\n"
+                "            | table _time, conversationID, GUID, interactionID, messageSender,\n"
+                "            messageRecipient, messageRef, jdiEvent, toSystem, fromSystem"
+            ),
         }
 
         splunk_api_token = self._get_api_auth_token()
@@ -96,7 +103,9 @@ class SpineExporter:
             search_end_datetime = convert_to_datetime_string(date + timedelta(days=1))
 
             spine_data = self._fetch_spine_data(
-                search_start_time=search_start_datetime, search_end_time=search_end_datetime
+                search_start_time=search_start_datetime,
+                search_end_time=search_end_datetime,
+                splunk_index=self._config.splunk_index,
             )
 
             s3_key = self._create_s3_key(date)
