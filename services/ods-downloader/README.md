@@ -126,7 +126,7 @@ If you see the below notice when trying to activate the python virtual environme
 ### Running the ods-downloader pipeline manually for testing
 
 1. Send the asidLookup.csv to the gp-registrations-data email address [Manually triggering store_asid_lookup_lambda](https://github.com/NHSDigital/gp2gp-reporting-infrastructure/blob/main/lambdas/store_asid_lookup/README.md).
-1. This will then trigger the Ods-Downloader pipeline.
+1. The final stages of the Store-asid-lookup-lambda will then trigger the Ods-Downloader pipeline.
 1. It will then read from the `prm-gp2gp-asid-lookup-{env}` which is populated by the store asid lookup lambda. It will then grab the relevant practices and organisation metadata.
 1. It will then write the Organisation metadata to the output bucket `prm-gp2gp-ods-metadata-{env}/{version}/{year}/{month}`
 1. If these operations are run successfully then the pipelines execution will return as a success.
@@ -136,6 +136,3 @@ If you see the below notice when trying to activate the python virtual environme
       "time": "YYYY-MM-01T00:00:00Z"
     }
 ```
-
-Not automatically calling the pipeline? may need manual triggering 
-triggered on the 1st of the month by ??? 
