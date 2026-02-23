@@ -43,17 +43,17 @@ class SpineExporter:
         return self._ssm_secret_manager.get_secret(self._config.splunk_api_token_param_name)
 
     def _fetch_spine_data(
-            self,
-            search_start_time: str,
-            search_end_time: str,
-            splunk_index: str,
+        self,
+        search_start_time: str,
+        search_end_time: str,
+        splunk_index: str,
     ) -> bytes:
         request_body = {
             "output_mode": "csv",
             "earliest_time": search_start_time,
             "latest_time": search_end_time,
             "search": (
-                f"search index=\"{splunk_index}\" service=\"gp2gp\" logReference=\"MPS0053d\"\n"
+                f'search index="{splunk_index}" service="gp2gp" logReference="MPS0053d"\n'
                 "            | table _time, conversationID, GUID, interactionID, messageSender,\n"
                 "            messageRecipient, messageRef, jdiEvent, toSystem, fromSystem"
             ),
