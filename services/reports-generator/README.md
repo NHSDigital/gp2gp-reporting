@@ -90,12 +90,17 @@ Common development workflows are defined in the `tasks` script.
 This project is written in Python 3.14.
 
 ### Running the reports-generator manually for testing
-#### There are 3 different paths that can be taken after triggering this pipeline:
+
+> Prior to running these tests, inform Richard Sellers that some additional test emails will be received.
+
+There are 3 different paths that can be taken after triggering this pipeline:
+
 - Daily/weekly reporting window
 - Monthly reporting window
 - Custom reporting window
 
 Daily
+
 ```json
 {
   "ALERT_ENABLED": "true",
@@ -105,7 +110,9 @@ Daily
   "SEND_EMAIL_NOTIFICATION": "true"
 }
 ```
+
 Monthly
+
 ```json
 {
   "ALERT_ENABLED": "true",
@@ -115,13 +122,15 @@ Monthly
   "SEND_EMAIL_NOTIFICATION": "true"
 }
 ```
+
 Custom
+
 ```json
 {
   "ALERT_ENABLED": "true",
   "CONVERSATION_CUTOFF_DAYS": "0",
-  "START_DATETIME": "2026-02-01T00:00Z",
-  "END_DATETIME": "2026-02-06T00:00Z",
+  "START_DATETIME": "2024-07-13T00:00Z",
+  "END_DATETIME": "2024-07-14T00:00Z",
   "REPORT_NAME": "TRANSFER_OUTCOMES_PER_SUPPLIER_PATHWAY",
   "SEND_EMAIL_NOTIFICATION": "true"
 }
@@ -136,13 +145,13 @@ Custom
 
 #### Installing pyenv
 
-```
+```shell
 brew install pyenv
 ```
 
 #### Configure your shell's environment for Pyenv
 
-```
+```shell
 For zsh:
 echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
@@ -150,7 +159,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 #### Install new python and set as default
 
-```
+```shell
 pyenv install 3.14
 pyenv global 3.14
 ```
@@ -159,7 +168,7 @@ pyenv global 3.14
 
 In a new shell, run the following:
 
-```
+```shell
 python -m pip install pipenv
 python -m pip install -U "pip>=21.1”
 ```
@@ -168,7 +177,7 @@ python -m pip install -U "pip>=21.1”
 
 In a new shell, in the project directory run:
 
-```
+```shell
 ./tasks devenv
 ```
 
@@ -178,15 +187,15 @@ This will create a python virtual environment containing all required dependenci
 
 To find out the path of this new virtual environment, run:
 
-```
+```shell
 pipenv --venv
 ```
 
 Now you can configure the IDE. The steps for IntelliJ are following:
+
 1. Go to `File -> Project Structure -> SDK -> Add SDK -> Python SDK -> Existing environments`
 2. Click on three dots, paste the virtual environment path from before, and point to the python binary.
    The path should look like this: `/Users/janeDoe/.local/share/virtualenvs/prm-spine-exporter-NTBCQ41T/bin/python3.14`
-
 
 ### Running the unit and integration tests
 
