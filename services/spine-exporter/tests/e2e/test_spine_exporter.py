@@ -20,6 +20,7 @@ from tests.builders.file import open_gzip
 FAKE_SPLUNK_HOST = "127.0.0.1"
 FAKE_SPLUNK_PORT = 9000
 FAKE_SPLUNK_URL = f"http://{FAKE_SPLUNK_HOST}:{FAKE_SPLUNK_PORT}"
+FAKE_SPLUNK_INDEX = "fakeindex"
 
 FAKE_AWS_HOST = "127.0.0.1"
 FAKE_AWS_PORT = 8887
@@ -263,6 +264,7 @@ def _setup():
     environ["AWS_SECRET_ACCESS_KEY"] = "testing"
     environ["AWS_DEFAULT_REGION"] = "us-west-1"
     environ["SPLUNK_URL"] = FAKE_SPLUNK_URL
+    environ["SPLUNK_INDEX"] = FAKE_SPLUNK_INDEX
     environ["OUTPUT_SPINE_DATA_BUCKET"] = OUTPUT_BUCKET_NAME
     environ["SPLUNK_API_TOKEN_PARAM_NAME"] = API_TOKEN_PARAM_NAME
     environ["AWS_ENDPOINT_URL"] = FAKE_AWS_URL

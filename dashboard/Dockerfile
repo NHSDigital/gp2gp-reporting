@@ -1,5 +1,9 @@
 FROM node:24-trixie-slim
 
+# Update the package list and upgrade all installed system packages
+RUN apt-get update && apt-get upgrade -y && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy only required files for building and deploying pipeline
 COPY analytics-config.json /tmp/analytics-config.json
 COPY custom.d.ts /tmp/custom.d.ts

@@ -18,7 +18,7 @@ jobs:
         working-directory: ./dashboard
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
@@ -41,10 +41,10 @@ jobs:
           echo "::add-mask::$uri"
           echo "uri=$uri" >> $GITHUB_OUTPUT
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v6
         with:
-          node-version-file: dashboard/.nvmrc
+          node-version: 24.x
           cache: "npm"
           cache-dependency-path: dashboard/package-lock.json
 
@@ -96,7 +96,7 @@ jobs:
 
   dashboard_build_and_deploy:
     name: Build and deploy dashboard via dashboard pipeline step function
-    needs: [ redeploy_gp2gp_infrastructure_step_functions ]
+    needs: [redeploy_gp2gp_infrastructure_step_functions]
     environment: dev
     runs-on: ubuntu-latest
     steps:
@@ -118,4 +118,3 @@ jobs:
           aws stepfunctions start-execution \
             --state-machine-arn "arn:aws:states:eu-west-2:${{ steps.credentials.outputs.aws-account-id }}:stateMachine:dashboard-pipeline" \
             --input '{"SKIP_METRICS": true,"time": "${{ steps.date.outputs.date }}"}'
-
