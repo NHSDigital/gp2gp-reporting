@@ -20,6 +20,7 @@ types-requests = "~=2.32"
 types-python-dateutil = "~=2.9"
 urllib3 = "==2.6.3"
 setuptools = "==80.10.2"
+werkzeug = "==3.1.6"
 
 [requires]
 python_version = "3.14"
