@@ -55,6 +55,7 @@ class EnvConfig:
 @dataclass
 class SpineExporterConfig:
     splunk_url: str
+    splunk_index: str
     splunk_api_token_param_name: str
     output_spine_data_bucket: str
     build_tag: str
@@ -68,6 +69,7 @@ class SpineExporterConfig:
         env = EnvConfig(env_vars)
         return cls(
             splunk_url=env.read_str("SPLUNK_URL"),
+            splunk_index=env.read_str("SPLUNK_INDEX"),
             splunk_api_token_param_name=env.read_str("SPLUNK_API_TOKEN_PARAM_NAME"),
             output_spine_data_bucket=env.read_str("OUTPUT_SPINE_DATA_BUCKET"),
             build_tag=env.read_str("BUILD_TAG"),
