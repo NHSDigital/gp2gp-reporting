@@ -92,13 +92,14 @@ jobs:
 
   redeploy_step_functions_on_infra:
     name: Redeploy step functions on infrastructure
-    needs: [metrics-calculator, ods-downloader, reports-generator, transfer-classifier]
+    needs: [metrics-calculator, ods-downloader, reports-generator, spine-exporter, transfer-classifier]
     if: |
       always() &&
-      (needs.metrics-calculator.result == 'success' || needs.ods-downloader.result == 'success' || needs.reports-generator.result == 'success' || needs.transfer-classifier.result == 'success') && 
+      (needs.metrics-calculator.result == 'success' || needs.ods-downloader.result == 'success' || needs.reports-generator.result == 'success' || needs.spine-exporter.result == 'success' || needs.transfer-classifier.result == 'success') && 
       (needs.metrics-calculator.result == 'success' || needs.metrics-calculator.result == 'skipped') && 
       (needs.ods-downloader.result == 'success' || needs.ods-downloader.result == 'skipped') && 
       (needs.reports-generator.result == 'success' || needs.reports-generator.result == 'skipped') && 
+      (needs.spine-exporter.result == 'success' || needs.spine-exporter.result == 'skipped') &&
       (needs.transfer-classifier.result == 'success' || needs.transfer-classifier.result == 'skipped')
     uses: NHSDigital/gp2gp-reporting-infrastructure/.github/workflows/deploy-stack.yml@v4
     with:
