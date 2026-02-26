@@ -20,6 +20,7 @@ pytest-cov = "~=7.0.0"
 pytest = "~=9.0.2"
 urllib3 = "==2.6.3"
 setuptools = "==80.10.2"
+# These following packages are used to patch vulnerabilities in transitive dependencies and are not used directly
 werkzeug = "==3.1.6"
 flask = "==3.1.3"
 

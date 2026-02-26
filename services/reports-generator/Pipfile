@@ -22,6 +22,7 @@ freezegun = "~=1.5.5"
 boto3-stubs = {extras = ["s3"], version = "1.42.3"}
 urllib3 = "==2.6.3"
 setuptools = "==80.10.2"
+# These following packages are used to patch vulnerabilities in transitive dependencies and are not used directly
 werkzeug = "==3.1.6"
 flask = "==3.1.3"
 

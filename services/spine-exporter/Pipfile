@@ -20,6 +20,7 @@ types-requests = "~=2.32"
 types-python-dateutil = "~=2.9"
 urllib3 = "==2.6.3"
 setuptools = "==80.10.2"
+# These following packages are used to patch vulnerabilities in transitive dependencies and are not used directly
 werkzeug = "==3.1.6"
 flask = "==3.1.3"
 
